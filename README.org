@@ -1,0 +1,55 @@
+#-*- encoding: utf-8; mode: org -*-
+
+* USAGE
+
+** Crawl it
+#+BEGIN_SRC bash
+bundle
+ruby bin/build_target_list.rb
+ruby bin/crawl_target_links.rb
+#+END_SRC
+
+** Get data
+
+irb>
+#+BEGIN_SRC ruby
+  require 'pstore'
+  require_relative './bin/bootstrap.rb'
+  data_file = PROJECT_ROOT.join('data','data.pstore')
+
+  storage = PStore.new(data_file)
+  storage.transaction do
+       storage[:documents]
+  end
+#+END_SRC
+
+* worklog
+** parse
+*** DONE parse list of urls
+    - State "DONE"       from "STARTED"    [2017-09-17 Sun 16:39]
+    - State "STARTED"    from "TODO"       [2017-09-17 Sun 06:49]
+    :CLOCK:
+    CLOCK: [2017-09-17 Sun 16:25]--[2017-09-17 Sun 16:41] =>  0:16
+    CLOCK: [2017-09-17 Sun 15:27]--[2017-09-17 Sun 16:07] =>  0:40
+    CLOCK: [2017-09-17 Sun 13:10]--[2017-09-17 Sun 13:17] =>  0:07
+    CLOCK: [2017-09-17 Sun 06:49]--[2017-09-17 Sun 07:39] =>  0:50
+    :END:
+*** DONE parse target urls
+    - State "DONE"       from "STARTED"    [2017-09-17 Sun 17:43]
+    - State "STARTED"    from "TODO"       [2017-09-17 Sun 16:41]
+    :CLOCK:
+    CLOCK: [2017-09-17 Sun 17:37]--[2017-09-17 Sun 17:43] =>  0:06
+    CLOCK: [2017-09-17 Sun 16:41]--[2017-09-17 Sun 17:37] =>  0:56
+    :END:
+*** parse all pages
+** store
+*** STARTED store targets urls to csv (deduplicate?)
+    :CLOCK:
+    CLOCK: [2017-09-17 Sun 17:48]--[2017-09-17 Sun 18:28] =>  0:40
+    :END:
+    - State "STARTED"    from "TODO"       [2017-09-17 Sun 06:49]
+*** TODO script load list of target urls from csv
+*** TODO script store targets to csv
+
+** process
+*** add eye to start crawl processes
