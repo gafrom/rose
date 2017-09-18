@@ -1,6 +1,8 @@
 require 'nokogiri'
 require 'pstore'
 module Crawl100Sp
+  TOTAL_PAGES = 44
+
   class << self
     def store_target_links(path, links)
       file = File.open(path, 'a+')
