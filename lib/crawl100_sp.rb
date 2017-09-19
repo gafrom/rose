@@ -36,7 +36,7 @@ module Crawl100Sp
       {
         city: city,
         title: doc.css('h1.h1-purchase').text.strip,
-        purchase_type: doc.css('div.purchase-badge span.purchase_type.ptype6').text.strip,
+        purchase_type: doc.css('div.purchase-badge span.purchase_type').text.strip,
         status_badge: doc.css('div.purchase-badge.purchase-status-badge').text.strip,
         org_name: doc.css('span.purchase-org-name a').children.first.text,
         org_rating: doc.css('span.org-rating.full').text.strip,
